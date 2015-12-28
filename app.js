@@ -12,11 +12,13 @@ var AccessToken = require('twilio').AccessToken;
 var ConversationsGrant = AccessToken.ConversationsGrant;
 var express = require('express');
 var randomUsername = require('./randos');
+var bodyParser = require('body-parser');
 
 // Create Express webapp
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 /*
  Generate an Access Token for a chat application user - it generates a random
  username for the client requesting a token, and takes a device ID as a query
@@ -48,6 +50,22 @@ app.get('/token', function(request, response) {
     identity: identity,
     token: token.toJwt()
   });
+});
+
+app.post('/login', function(req, res) {
+    var users = [{'username':'JamesXie','password':'Audatex8020!','role':'user'},{'username':'admin','password':'Audatex8020!','role':'admin'}];
+    var matchedUser;
+    for(var i = 0; i < users.length; i++) {
+        var user = users[i];
+        if(user.username == req.body.username && user.password == req.body.password) {
+            matchedUser = user;
+        }
+    }
+    if(typeof matchedUser !=='undefined') {
+        res.send(matchedUser);
+    } else {
+        res.send({error:'Please input correct username and password!'});
+    }
 });
 
 // Create http server and run it

@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Twilio Video - Video Quickstart</title>
-  <link rel="stylesheet" href="https://media.twiliocdn.com/sdk/quickstart/conversations-quickstart.min.css">
+<head lang="en">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!--<link rel="stylesheet" href="https://media.twiliocdn.com/sdk/quickstart/conversations-quickstart.min.css">-->
+    <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+    <script src="https://media.twiliocdn.com/sdk/js/conversations/v0.13/twilio-conversations.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-ui-router.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/angular-chart.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/custom-theme/jquery.ui.1.10.0.ie.css">
+    <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.0.custom.css">
+    <link rel="stylesheet" href="css/angular-chart.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>AudaExplore Call Center</title>
 </head>
-<body>
-  <div id="remote-media"></div>
-  <div id="controls">
-    <div id="preview">
-      <p class="instructions">Hello Beautiful</p>
-      <div id="local-media"></div>
-      <button id="button-preview">Preview My Camera</button>
-    </div>
-    <div id="invite-controls">
-      <p class="instructions">Invite another Video Client</p>
-      <input id="invite-to" type="text" placeholder="Identity to send an invite to" />
-      <button id="button-invite">Send Invite</button>
-    </div>
-    <div id="log">
-      <p>&gt;&nbsp;<span id="log-content">Preparing to listen</span>...</p>
-    </div>
-  </div><!-- /controls -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-  <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
-  <script src="https://media.twiliocdn.com/sdk/js/conversations/v0.13/twilio-conversations.min.js"></script>
-  <script src="quickstart.js"></script>
+<body ng-app="VideoCallCenter">
+<div class="row" ng-view></div>
+<footer class="row">
+    <div ng-include="'views/footer.html'"></div>
+</footer>
+<!--It is for spinner-->
+<div id ="center" style="position:fixed;top:50%;left:50%;z-index: 1000;"></div>
+<script src="controller/utils.js"></script>
+<script src="controller/spin.js"></script>
+<script src="app.js"></script>
+<script src="controller/login.js"></script>
+<script src="controller/callCenter.js"></script>
+<script src="controller/appkeys.js"></script>
 </body>
 </html>

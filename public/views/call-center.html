@@ -1,0 +1,65 @@
+<div ng-include="'views/nav.html'"></div>
+<div class="container">
+    <div class="row">
+        <div id="remote-media"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="row sidebar-module">
+                <ul col-md-12 list-group>
+                    <li class="list-group-item list-group-item-success">
+                        <strong>
+                            <i class="fa fa-calculator"></i>
+                            <span>&nbsp;&nbsp;Hello {{loginUser}}</span>
+                        </strong>
+                    </li>
+                    <span class="list-group-item">
+                        <div id="local-media">
+                        </div>
+                    </span>
+                    <span class="list-group-item center">
+                         <button id="button-preview" class="btn btn-default" ng-click="previewCamera()">Preview My Camera</button>
+                    </span>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-4" ng-show="isShownInviteControls()">
+            <div class="row sidebar-module">
+                <ul col-md-12 list-group>
+                    <li class="list-group-item list-group-item-success">
+                        <strong>
+                            <i class="fa fa-calculator"></i>
+                            <span>&nbsp;&nbsp;Invite another Video Client</span>
+                        </strong>
+                    </li>
+
+                    <span class="list-group-item">
+                          <input id="invite-to" type="text" class="form-control" ng-model="inviteToId" type="text" placeholder="Identity to send an invite to" />
+                    </span>
+                     <span class="list-group-item center">
+                         <button id="button-invite" class="btn btn-default" ng-click="sendInvite()">Send Invite</button>
+                    </span>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row sidebar-module">
+                <ul col-md-12 list-group>
+                    <li class="list-group-item list-group-item-success">
+                        <strong>
+                            <i class="fa fa-calculator"></i>
+                            <span>&nbsp;&nbsp;Message</span>
+                        </strong>
+                    </li>
+
+                    <span class="list-group-item">
+                           <div class="alert alert-dismissible alert-success" ng-hide="logMsg.length===0">
+                               {{logMsg}}
+                           </div>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
