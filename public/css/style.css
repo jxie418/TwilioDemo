@@ -96,8 +96,8 @@ div#local-media{
     margin: 0 auto;
 }
 div#local-media video {
-    max-width: 270%;
-    max-height: 202%;
+    max-width: 100%;
+    max-height: 100%;
     border: none;
 }
 div#local-media video {
@@ -108,8 +108,8 @@ div#local-media video {
 }
 
 div#remote-media {
-    height: 50%;
-    width: 50%;
+    height: 270px;
+    width: 202px;
     background-color: rgb(255, 255, 255);
     text-align: center;
     margin: auto;
