@@ -108,8 +108,8 @@ div#local-media video {
 }
 
 div#remote-media {
-    height: 270px;
-    width: 202px;
+    height: 50%;
+    width: 100%;
     background-color: rgb(255, 255, 255);
     text-align: center;
     margin: auto;
