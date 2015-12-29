@@ -77,8 +77,7 @@ angular
                     $scope.previewMedia = new Twilio.Conversations.LocalMedia();
                     Twilio.Conversations.getUserMedia().then(
                         function (mediaStream) {
-                            $scope.previewMedia.addStream(mediaStream);
-                            //$scope.previewMedia.attach('#local-media');
+                            $scope.previewMedia.attach('#local-media');
                         },
                         function (error) {
                             console.error('Unable to access local media', error);
