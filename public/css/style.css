@@ -110,7 +110,7 @@ div#remote-media{height:43%;width:100%;background-color:#fff;text-align:center;m
 div#remote-media video{
     border:1px solid #272726;
     margin:3em 2em;
-    height:70%;
+    height:100%;
     max-width:27%!important;
     background-color:#272726;
     background-repeat:no-repeat
