@@ -10,7 +10,6 @@ angular
             $scope.conversationsClient="";
             $scope.activeConversation="";
             $scope.previewMedia="";
-            $scope.localMedias = [];
             $scope.identity="";
             $scope.inviteToId = "";
             $scope.logMsg = "Preparing to listen...";
@@ -30,8 +29,7 @@ angular
                 $scope.activeConversation = conversation;
                 // Draw local video, if not already previewing
                 if (!$scope.previewMedia) {
-                    //conversation.localMedia.attach('#local-media');
-                    $scope.localMedias.push(conversation.localMedia);
+                    conversation.localMedia.attach('#local-media');
                 }
 
                 // When a participant joins, draw their video on screen
