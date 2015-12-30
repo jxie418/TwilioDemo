@@ -15,6 +15,8 @@ angular
             $scope.logMsg = "Preparing to listen...";
             $scope.logout = function() {
                 $rootScope.currentUser = '';
+                $scope.activeConversation.disconnect();
+                $scope.activeConversation = null;
                 $state.go('login');
             };
 
