@@ -18,18 +18,75 @@ angular
                 $state.go('login');
             };
 
-            $scope.drawCircle = function($event) {
-                var canvas = document.getElementById("instructionCanvas");
-                var context = canvas.getContext("2d");
-                var rect = canvas.getBoundingClientRect();
-                var posx = $event.clientX - rect.left;
-                var posy = $event.clientY - rect.top;
+            var canvas = document.getElementById("instructionCanvas");
+            var ctx = canvas.getContext("2d");
+            var canvasOffset = $("#instructionCanvas").offset();
+            var offsetX = canvasOffset.left;
+            var offsetY = canvasOffset.top;
+            var startX;
+            var startY;
+            var isDown = false;
 
-                context.fillStyle = "#000000";
-                context.beginPath();
-                context.arc(posx, posy, 50, 0, 2 * Math.PI);
-                context.fill();
-            };
+            function drawOval(x, y) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.beginPath();
+                ctx.moveTo(startX, startY + (y - startY) / 2);
+                ctx.bezierCurveTo(startX, startY, x, startY, x, startY + (y - startY) / 2);
+                ctx.bezierCurveTo(x, y, startX, y, startX, startY + (y - startY) / 2);
+                ctx.closePath();
+                ctx.stroke();
+            }
+
+            function handleMouseDown(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                startX = parseInt(e.clientX - offsetX);
+                startY = parseInt(e.clientY - offsetY);
+                isDown = true;
+            }
+
+            function handleMouseUp(e) {
+                if (!isDown) {
+                    return;
+                }
+                e.preventDefault();
+                e.stopPropagation();
+                isDown = false;
+            }
+
+            function handleMouseOut(e) {
+                if (!isDown) {
+                    return;
+                }
+                e.preventDefault();
+                e.stopPropagation();
+                isDown = false;
+            }
+
+            function handleMouseMove(e) {
+                if (!isDown) {
+                    return;
+                }
+                e.preventDefault();
+                e.stopPropagation();
+                var mouseX = parseInt(e.clientX - offsetX);
+                var mouseY = parseInt(e.clientY - offsetY);
+                drawOval(mouseX, mouseY);
+            }
+
+            $("#instructionCanvas").mousedown(function (e) {
+                handleMouseDown(e);
+            });
+            $("#instructionCanvas").mousemove(function (e) {
+                handleMouseMove(e);
+            });
+            $("#instructionCanvas").mouseup(function (e) {
+                handleMouseUp(e);
+            });
+            $("#instructionCanvas").mouseout(function (e) {
+                handleMouseOut(e);
+            });
+
 
             $scope.isShownInviteControls = function() {
               return   $scope.showInviteControls;
