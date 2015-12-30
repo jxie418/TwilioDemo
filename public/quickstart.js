@@ -67,7 +67,7 @@ function conversationStarted(conversation) {
         log("Participant '" + participant.identity + "' connected");
         participant.media.attach('#remote-media');
         var divInfo = document.getElementById('testInformation');
-        participant.medial.attachments.push(divInfo);
+        participant.media.attachments.push(divInfo);
     });
 
     // When a participant disconnects, note in log
