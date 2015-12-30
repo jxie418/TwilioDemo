@@ -66,6 +66,8 @@ function conversationStarted(conversation) {
     conversation.on('participantConnected', function (participant) {
         log("Participant '" + participant.identity + "' connected");
         participant.media.attach('#remote-media');
+
+        participant.medial.attachments.push();
     });
 
     // When a participant disconnects, note in log
