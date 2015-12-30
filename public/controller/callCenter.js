@@ -29,7 +29,10 @@ angular
                 $scope.activeConversation = conversation;
                 // Draw local video, if not already previewing
                 if (!$scope.previewMedia) {
+                    //$scope.previewMedia = conversation.localMedia;
                     //conversation.localMedia.attach('#local-media');
+                    //$scope.previewMedia.attach('#local-media');
+                    initLocalMedia();
                 }
 
                 // When a participant joins, draw their video on screen
@@ -72,20 +75,23 @@ angular
                     invite.accept().then(conversationStarted);
                 });
             };
+            var initLocalMedia = function() {
+                $scope.previewMedia = new Twilio.Conversations.LocalMedia();
+                Twilio.Conversations.getUserMedia().then(
+                    function (mediaStream) {
+                        $scope.previewMedia.addStream(mediaStream);
+                        $scope.previewMedia.attach('#local-media');
+                    },
+                    function (error) {
+                        console.error('Unable to access local media', error);
+                        $scope.$apply(function(){
+                            $scope.logMsg ='Unable to access Camera and Microphone';
+                        });
+                    });
+            };
             $scope.previewCamera = function() {
                 if (!$scope.previewMedia) {
-                    $scope.previewMedia = new Twilio.Conversations.LocalMedia();
-                    Twilio.Conversations.getUserMedia().then(
-                        function (mediaStream) {
-                            $scope.previewMedia.addStream(mediaStream);
-                            $scope.previewMedia.attach('#local-media');
-                        },
-                        function (error) {
-                            console.error('Unable to access local media', error);
-                            $scope.$apply(function(){
-                                $scope.logMsg ='Unable to access Camera and Microphone';
-                            });
-                        });
+                    initLocalMedia();
                 };
             };
             $scope.sendInvite = function() {
