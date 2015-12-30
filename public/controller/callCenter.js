@@ -29,9 +29,7 @@ angular
                 $scope.activeConversation = conversation;
                 // Draw local video, if not already previewing
                 if (!$scope.previewMedia) {
-                    //$scope.previewMedia = conversation.localMedia;
                     //conversation.localMedia.attach('#local-media');
-                    //$scope.previewMedia.attach('#local-media');
                     initLocalMedia();
                 }
 
