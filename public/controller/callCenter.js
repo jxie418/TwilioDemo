@@ -18,6 +18,19 @@ angular
                 $state.go('login');
             };
 
+            $scope.drawCircle = function($event) {
+                var canvas = document.getElementById("instructionCanvas");
+                var context = canvas.getContext("2d");
+                var rect = canvas.getBoundingClientRect();
+                var posx = $event.clientX - rect.left;
+                var posy = $event.clientY - rect.top;
+
+                context.fillStyle = "#000000";
+                context.beginPath();
+                context.arc(posx, posy, 50, 0, 2 * Math.PI);
+                context.fill();
+            };
+
             $scope.isShownInviteControls = function() {
               return   $scope.showInviteControls;
             };
