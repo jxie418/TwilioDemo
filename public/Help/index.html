@@ -11,7 +11,7 @@
 	<meta name="author" content="Muaz Khan">
 	<link rel="author" type="text/html" href="https://plus.google.com/+MuazKhan">
 
-	<link href="../Style.css" rel="stylesheet">
+	<link href="../javascripts/Style.css" rel="stylesheet">
 	<style>
 		.highlight {
 			color: rgb(166, 20, 20);
@@ -55,32 +55,32 @@
 		</p>
 		<ul>
 			<li>
-				<a href="../line-handler.js">line-handler.js</a> : for lines drawing!
+				<a href="../javascripts/line-handler.js">line-handler.js</a> : for lines drawing!
 			</li>
 			<li>
-				<a href="../arc-handler.js">arc-handler.js</a> : for arcs/circles drawing!
+				<a href="../javascripts/arc-handler.js">arc-handler.js</a> : for arcs/circles drawing!
 			</li>
 			<li>
-				<a href="../quadratic-handler.js">quadratic-handler.js</a> : for quadratic curves drawing!
+				<a href="../javascripts/quadratic-handler.js">quadratic-handler.js</a> : for quadratic curves drawing!
 			</li>
 			<li>
-				<a href="../bezier-handler.js">bezier-handler.js</a> : for bezier curves drawing!
+				<a href="../javascripts/bezier-handler.js">bezier-handler.js</a> : for bezier curves drawing!
 			</li>
 			<li>
-				<a href="../rect-handler.js">rect-handler.js</a> : for rectangles drawing!
+				<a href="../javascripts/rect-handler.js">rect-handler.js</a> : for rectangles drawing!
 			</li>
 		</ul>
 		<p>
-			Common task like output in textarea, global variables/objects etc. have been placed in <a href="../common.js">common.js</a> file.
+			Common task like output in textarea, global variables/objects etc. have been placed in <a href="../javascripts/common.js">common.js</a> file.
 		</p>
 		<p>
-			Dragging relevant code has been placed in <a href="../drag-helper.js">drag-helper.js</a> and drawing relevant code has been placed in <a href="../draw-helper.js">draw-helper.js</a> file. (<strong>Note:</strong> <a href="../draw-helper.js">draw-helper.js</a> is most important file in this project because functions it contains are repeatedly called from all portions of the project!)
+			Dragging relevant code has been placed in <a href="../javascripts/drag-helper.js">drag-helper.js</a> and drawing relevant code has been placed in <a href="../javascripts/draw-helper.js">draw-helper.js</a> file. (<strong>Note:</strong> <a href="../javascripts/draw-helper.js">draw-helper.js</a> is most important file in this project because functions it contains are repeatedly called from all portions of the project!)
 		</p>
 		<p>
-			<a href="../events-handler.js">events-handler.js</a> is used to handle global events like mousemove, mouseup, mousedown and their touch relevant!
+			<a href="../javascripts/events-handler.js">events-handler.js</a> is used to handle global events like mousemove, mouseup, mousedown and their touch relevant!
 		</p>
 		<p>
-			There is a file <a href="../decorator.js">decorator.js</a> which is aimed to decorate the designer; i.e. to decorate the design surface, toolbox, etc.
+			There is a file <a href="../javascripts/decorator.js">decorator.js</a> which is aimed to decorate the designer; i.e. to decorate the design surface, toolbox, etc.
 		</p>
 	</div>
 	
@@ -121,13 +121,13 @@ var points = [path-name, path-coordinates, path-options];
 			Digging into the code!
 		</h2>
 		<p>
-			<a href="../draw-helper.js">draw-helper.js</a> defines a method named "<code>redraw</code>" that is one of the most called functions in this project. <code>redraw</code> aimed to refresh all points on the drawing surface! By default, this function is called on each <code>mousedown</code>/<code>mouseup</code> event; however, in some cases, it is also called in <code>mousemove</code> event. (See <a href="../drag-helper.js">drag-helper.js</a> file)
+			<a href="../javascripts/draw-helper.js">draw-helper.js</a> defines a method named "<code>redraw</code>" that is one of the most called functions in this project. <code>redraw</code> aimed to refresh all points on the drawing surface! By default, this function is called on each <code>mousedown</code>/<code>mouseup</code> event; however, in some cases, it is also called in <code>mousemove</code> event. (See <a href="../javascripts/drag-helper.js">drag-helper.js</a> file)
 		</p>
 		<p>
-			<a href="../common.js">common.js</a> defines second most called function "<code>updateTextArea</code>" which is aimed to update the output accordingly.
+			<a href="../javascripts/common.js">common.js</a> defines second most called function "<code>updateTextArea</code>" which is aimed to update the output accordingly.
 		</p>
 		<p>
-			In the top of <a href="../common.js">common.js</a> file; there is an object "<code>is</code>" which contains <code>Boolean</code> properties for selected toolbox shape(s). Mouse/Touch events in the <a href="../events-handler.js">events-handler.js</a> are using these properties to call appropriate objects!
+			In the top of <a href="../javascripts/common.js">common.js</a> file; there is an object "<code>is</code>" which contains <code>Boolean</code> properties for selected toolbox shape(s). Mouse/Touch events in the <a href="../javascripts/events-handler.js">events-handler.js</a> are using these properties to call appropriate objects!
 		</p>
 	</div>
 	
@@ -192,7 +192,7 @@ var points = [path-name, path-coordinates, path-options];
 			After adding above HTML code, if you refresh the page; you'll see an empty icon appended in the bottom of the toolbox. Now you've to decorate this icon so end users can understand it!
 		</p>
 		<p>
-			Open <a href="../decorator.js">decorator.js</a> file and append following code anywhere in <a href="../decorator.js">the file</a>.
+			Open <a href="../javascripts/decorator.js">decorator.js</a> file and append following code anywhere in <a href="../javascripts/decorator.js">the file</a>.
 		</p>
 		<pre>
 function givenName() {
@@ -205,7 +205,7 @@ function givenName() {
 givenName();
 </pre>
 		<p>
-			<code>FeatureSelected</code> is a global property used to understand the current state of your new toolbox icon (whether icon is selected or not). (Open <a href="../common.js">common.js</a> file)
+			<code>FeatureSelected</code> is a global property used to understand the current state of your new toolbox icon (whether icon is selected or not). (Open <a href="../javascripts/common.js">common.js</a> file)
 		</p>
 		<pre>
 var is = {
@@ -245,7 +245,7 @@ var <span class="highlight">featureHandler</span> = {
 			4th Step: Bind mouse events
 		</h2>
 		<p>
-			Now you've to bind mouse events to your newly created object. Open <a href="../events-handler.js">events-handler.js</a> and append following code:
+			Now you've to bind mouse events to your newly created object. Open <a href="../javascripts/events-handler.js">events-handler.js</a> and append following code:
 		</p>
 		<pre>
 addEvent(canvas, isTouch ? 'touchstart' : 'mousedown', function (e) {
@@ -267,7 +267,7 @@ addEvent(canvas, isTouch ? 'touchmove' : 'mousemove', function (e) {
 });
 </pre>
 		<p>
-			Now you are 80% done! I strongly recommend you place your feature's drawing relevant code in the <a href="../draw-helper.js">draw-helper.js</a> file as I did for other features! - Reusability!!
+			Now you are 80% done! I strongly recommend you place your feature's drawing relevant code in the <a href="../javascripts/draw-helper.js">draw-helper.js</a> file as I did for other features! - Reusability!!
 		</p>
 		<h2>
 			5th Step: Handle the output (textarea!)
@@ -276,7 +276,7 @@ addEvent(canvas, isTouch ? 'touchmove' : 'mousemove', function (e) {
 			This is the last step. You've to handle the output for textarea.
 		</p>
 		<p>
-			Open <a href="../common.js">common.js</a> file; there is a function "updateTextArea" in the "common" object – which is aimed to output into textarea element.
+			Open <a href="../javascripts/common.js">common.js</a> file; there is a function "updateTextArea" in the "common" object – which is aimed to output into textarea element.
 		</p>
 		<p>
 			You don't have to change "updateTextArea". For simplicity purpose, code is separated in different functions/properties that you've to edit:
@@ -296,13 +296,13 @@ addEvent(canvas, isTouch ? 'touchmove' : 'mousemove', function (e) {
 			</li>
 		</ol>
 		<p>
-			Wait! – You've to edit "<code>init</code>" function and <a href="../drag-helper.js">drag-helper.js</a> file too! – See below div.
+			Wait! – You've to edit "<code>init</code>" function and <a href="../javascripts/drag-helper.js">drag-helper.js</a> file too! – See below div.
 		</p>
 	</div>
 	
 	<div>
 		<h2>
-			What "init" function in <a href="../drag-helper.js">drag-helper.js</a> do?
+			What "init" function in <a href="../javascripts/drag-helper.js">drag-helper.js</a> do?
 		</h2>
 		<p>
 			This function is aimed to draw little transparent-red circles around the stretchable points of the shape so end-user can stretch the shape using those points! (To test it; draw a line, then click arrow [first-icon] on toolbox!) – This function is called on <code>mousemove</code> event.
@@ -321,7 +321,7 @@ if (p[0] === '<span class="highlight">your-shape</span>') {
 }
 </pre>
 		<p>
-			You've to edit other two functions in the <a href="../drag-helper.js">drag-helper.js</a> file (It is absolutely necessary because it helps change points accordingly while dragging the shape!):
+			You've to edit other two functions in the <a href="../javascripts/drag-helper.js">drag-helper.js</a> file (It is absolutely necessary because it helps change points accordingly while dragging the shape!):
 		</p>
 		<ol>
 			<li>
@@ -355,7 +355,7 @@ if (p[0] === '<span class="highlight">your-shape-name</span>') {
 }
 
 /*≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡*/
-// in "mousedown" event (in the <a href="../drag-helper.js">same file</a>!)
+// in "mousedown" event (in the <a href="../javascripts/drag-helper.js">same file</a>!)
 if (p[0] === '<span class="highlight">your-shape-name</span>') {
 
 	if (dHelper.isPointInPath(x, y, point[0], point[1])) {
@@ -377,7 +377,7 @@ if (p[0] === '<span class="highlight">your-shape-name</span>') {
 			I did a detailed post about this: <a href="http://muaz-khan.blogspot.com/2012/02/draggingmoving-shapes-smoothly-using_12.html">Dragging/Moving shapes smoothly using Canvas 2d APIs</a>
 		</p>
 		<p>
-			In the <a href="../drag-helper.js">drag-helper.js</a> file – "<code>global</code>" object contains following three properties:
+			In the <a href="../javascripts/drag-helper.js">drag-helper.js</a> file – "<code>global</code>" object contains following three properties:
 		</p>
 		<ol>
 			<li>

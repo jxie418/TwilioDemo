@@ -1,6 +1,6 @@
 ﻿/* Muaz Khan (@muazkh) */
 /*-------------------------------------------------------------*/
-textarea::::-webkit-scrollbar {
+textarea::-webkit-scrollbar {
     width: 0;
     height: 0;
 }
