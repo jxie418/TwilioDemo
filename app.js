@@ -69,7 +69,7 @@ app.post('/login', function(req, res) {
 });
 
 
-var io = require('socket.io').listen(app);
+var io = require('socket.io');
 
 io.sockets.on('connection', function (socket){
 
