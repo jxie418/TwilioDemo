@@ -3,6 +3,40 @@ var activeConversation;
 var previewMedia;
 var identity;
 
+var service = true;
+
+
+var connection = new RTCMultiConnection();
+connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+connection.enableFileSharing = false;
+connection.session = {
+    data: true
+};
+connection.sdpConstraints.mandatory = {
+    OfferToReceiveAudio: false,
+    OfferToReceiveVideo: false
+};
+
+connection.onUserStatusChanged = function(event) {
+    console.log("onUserStatusChanged"+event.userid);
+};
+connection.onopen = function(event) {
+    console.log("onopen :"+ event.userid);
+};
+connection.onmessage = function(event) {
+    CanvasDesigner.syncData( event.data );
+};
+CanvasDesigner.addSyncListener(function(data) {
+    connection.send(data);
+});
+CanvasDesigner.setSelected('pencil');
+CanvasDesigner.setTools({
+    pencil: true,
+    text: true,
+    eraser: true
+});
+
+CanvasDesigner.appendTo(document.getElementById('drawCanvas'));
 // Check for WebRTC
 if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
     alert('WebRTC is not available in your browser.');
@@ -29,13 +63,17 @@ function clientConnected() {
     log("Connected to Twilio. Listening for incoming Invites as '" + conversationsClient.identity + "'");
 
     conversationsClient.on('invite', function (invite) {
+        service = false;
         log('Incoming invite from: ' + invite.from);
         invite.accept().then(conversationStarted);
+        connection.join(conversationsClient.identity);
     });
 
     // Bind button to create conversation
     document.getElementById('button-invite').onclick = function () {
         var inviteTo = document.getElementById('invite-to').value;
+        connection.open(inviteTo);
+        service = true;
         if (activeConversation) {
             // Add a participant
             activeConversation.invite(inviteTo);
@@ -59,15 +97,23 @@ function conversationStarted(conversation) {
     activeConversation = conversation;
     // Draw local video, if not already previewing
     if (!previewMedia) {
-        conversation.localMedia.attach('#local-media');
+        if(service) {
+            conversation.localMedia.attach('#local-media');
+        } else {
+            conversation.localMedia.attach('#remote-media');
+        }
+
     }
 
     // When a participant joins, draw their video on screen
     conversation.on('participantConnected', function (participant) {
         log("Participant '" + participant.identity + "' connected");
-        participant.media.attach('#remote-media');
-        var divInfo = document.getElementById('testInformation');
-        participant.media.attachments.push(divInfo);
+        if(service) {
+            participant.media.attach('#remote-media');
+        } else {
+            participant.media.attach('#local-media');
+        }
+
     });
 
     // When a participant disconnects, note in log
@@ -104,3 +150,4 @@ document.getElementById('button-preview').onclick = function () {
 function log(message) {
     document.getElementById('log-content').innerHTML = message;
 }
+
