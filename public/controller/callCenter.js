@@ -31,8 +31,8 @@ angular
                 $scope.activeConversation = conversation;
                 // Draw local video, if not already previewing
                 if (!$scope.previewMedia) {
-                    //conversation.localMedia.attach('#local-media');
-                    initLocalMedia();
+                    conversation.localMedia.attach('#local-media');
+                    //initLocalMedia();
                 }
 
                 // When a participant joins, draw their video on screen
