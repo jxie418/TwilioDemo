@@ -21,7 +21,7 @@ angular
                 $state.go('login');
             };
             $scope.hasCall = function() {
-                return $scope.callerName.length;
+                return $scope.callerName;
             };
             $scope.isShownInviteControls = function() {
               return   $scope.showInviteControls;
@@ -42,17 +42,18 @@ angular
                 conversation.on('participantConnected', function (participant) {
                     $scope.$apply(function(){
                         $scope.logMsg = "Participant '" + participant.identity + "' connected";
+                        $scope.callerName = participant.identity;
                     });
                     participant.media.attach('#remote-media');
-                    $scope.callerName = participant.identity;
+
                 });
 
                 // When a participant disconnects, note in log
                 conversation.on('participantDisconnected', function (participant) {
                     $scope.$apply(function(){
                         $scope.logMsg ="Participant '" + participant.identity + "' disconnected";
+                        $scope.callerName = "";
                     });
-                    $scope.callerName = "";
                 });
 
                 // When the conversation ends, stop capturing local video
