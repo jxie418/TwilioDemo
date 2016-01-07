@@ -94,11 +94,13 @@ div#local-media{
     background-repeat: no-repeat;
     background-color: grey;
     margin: 0 auto;
+    border-radius: 10px;
 }
 div#local-media video {
     max-width: 100%;
     max-height: 100%;
     border: none;
+    border-radius: 10px;
 }
 div#local-media video {
     object-fit: contain;
@@ -111,10 +113,11 @@ div#local-media video {
     max-height: 100%;
     border: none;
 }
-div#remote-media{height:100%;width:100%;background-color:#fff;text-align:center;margin:auto}
+div#remote-media{height:100%;width:100%;background-color:#fff;text-align:center;margin:auto;border-radius: 10px;}
 div#remote-media video{
-    border:1px solid #272726;
+    border:0px solid #272726;
     max-height:100%;
     max-width:100%!important;
     background-repeat:no-repeat;
+    border-radius: 10px;
 }
