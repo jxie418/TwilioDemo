@@ -1,11 +1,30 @@
 <div ng-include="'views/nav.html'"></div>
 <div class="container">
+    <!--
     <div class="row">
-        <div id="remote-media">
-        </div>
-    </div>
 
+    </div>
+-->
     <div class="row">
+        <div class="col-sm-4" ng-show="hasCall()">
+            <div class="row sidebar-module">
+                <ul col-md-12 list-group>
+                    <li class="list-group-item list-group-item-success">
+                        <strong>
+                            <i class="fa fa-video-camera"></i>
+                            <span>&nbsp;&nbsp;Incoming {{callerName}}</span>
+                        </strong>
+                    </li>
+
+                    <span class="list-group-item">
+                       <div id="remote-media">
+                       </div>
+                    </span>
+
+                </ul>
+            </div>
+
+        </div>
         <div class="col-sm-4">
             <div class="row sidebar-module">
                 <ul col-md-12 list-group>
@@ -31,6 +50,7 @@
                 </ul>
             </div>
         </div>
+
         <div class="col-sm-4" ng-show="isShownInviteControls()">
             <div class="row sidebar-module">
                 <ul col-md-12 list-group>

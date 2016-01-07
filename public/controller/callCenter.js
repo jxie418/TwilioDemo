@@ -13,13 +13,16 @@ angular
             $scope.identity="";
             $scope.inviteToId = "";
             $scope.logMsg = "Preparing to listen...";
+            $scope.callerName ="";
             $scope.logout = function() {
                 $rootScope.currentUser = '';
                 $scope.activeConversation.disconnect();
                 $scope.activeConversation = null;
                 $state.go('login');
             };
-
+            $scope.hasCall = function() {
+                return $scope.callerName.length;
+            };
             $scope.isShownInviteControls = function() {
               return   $scope.showInviteControls;
             };
@@ -41,6 +44,7 @@ angular
                         $scope.logMsg = "Participant '" + participant.identity + "' connected";
                     });
                     participant.media.attach('#remote-media');
+                    $scope.callerName = participant.identity;
                 });
 
                 // When a participant disconnects, note in log
@@ -48,6 +52,7 @@ angular
                     $scope.$apply(function(){
                         $scope.logMsg ="Participant '" + participant.identity + "' disconnected";
                     });
+                    $scope.callerName = "";
                 });
 
                 // When the conversation ends, stop capturing local video
@@ -58,6 +63,7 @@ angular
                     conversation.localMedia.stop();
                     conversation.disconnect();
                     $scope.activeConversation = null;
+                    $scope.callerName = "";
                 });
             };
 
