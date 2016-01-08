@@ -34,6 +34,7 @@ angular
                 $scope.activeConversation = conversation;
                 // Draw local video, if not already previewing
                 if (!$scope.previewMedia) {
+                    $('#local-media').empty();
                     conversation.localMedia.attach('#local-media');
                     //initLocalMedia();
                 }
@@ -44,6 +45,7 @@ angular
                         $scope.logMsg = "Participant '" + participant.identity + "' connected";
                         $scope.callerName = participant.identity;
                     });
+                    $('#remote-media').empty();
                     participant.media.attach('#remote-media');
 
                 });
@@ -87,6 +89,7 @@ angular
                 Twilio.Conversations.getUserMedia().then(
                     function (mediaStream) {
                         $scope.previewMedia.addStream(mediaStream);
+                        $('#local-media').empty();
                         $scope.previewMedia.attach('#local-media');
                     },
                     function (error) {
