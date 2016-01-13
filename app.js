@@ -53,7 +53,7 @@ app.get('/token', function(request, response) {
 });
 
 app.post('/login', function(req, res) {
-    var users = [{'username':'JamesXie','password':'Audatex8020!','role':'user'},{'username':'admin','password':'Audatex8020!','role':'admin'}];
+    var users = [{'username':'support','password':'Audatex8020!','role':'user'},{'username':'admin','password':'Audatex8020!','role':'admin'}];
     var matchedUser;
     for(var i = 0; i < users.length; i++) {
         var user = users[i];
@@ -69,12 +69,11 @@ app.post('/login', function(req, res) {
 });
 
 // Create http server and run it
-/*
+
 var server = http.createServer(app);
 var port = 3009;
 server.listen(port, function() {
   console.log('Express server running on *:' + port);
 });
-*/
 
-module.exports = app;
+//module.exports = app;
