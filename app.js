@@ -69,11 +69,10 @@ app.post('/login', function(req, res) {
 });
 
 // Create http server and run it
-/*
+
 var server = http.createServer(app);
-var port = 3009;
+var port = process.env.PORT || 3010;
 server.listen(port, function() {
   console.log('Express server running on *:' + port);
 });
-*/
-module.exports = app;
+
